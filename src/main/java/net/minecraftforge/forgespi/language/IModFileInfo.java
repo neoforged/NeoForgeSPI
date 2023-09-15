@@ -34,6 +34,7 @@ public interface IModFileInfo
     List<LanguageSpec> requiredLanguageLoaders();
 
     boolean showAsResourcePack();
+
     default boolean showAsDataPack()
     {
         return false;
