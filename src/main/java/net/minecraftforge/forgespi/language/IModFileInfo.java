@@ -34,7 +34,10 @@ public interface IModFileInfo
     List<LanguageSpec> requiredLanguageLoaders();
 
     boolean showAsResourcePack();
-    boolean showAsDataPack();
+    default boolean showAsDataPack()
+    {
+        return false;
+    }
 
     Map<String,Object> getFileProperties();
 
