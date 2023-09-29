@@ -44,6 +44,8 @@ public interface IModInfo
 
     ArtifactVersion getVersion();
 
+    DependencySide getSide();
+
     List<? extends ModVersion> getDependencies();
 
     List<? extends ForgeFeature.Bound> getForgeFeatures();
