@@ -17,24 +17,40 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-package net.minecraftforge.forgespi.language;
+package net.neoforged.neoforgespi.language;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.maven.artifact.versioning.InvalidVersionSpecificationException;
+import net.neoforged.neoforgespi.locating.IModFile;
 import org.apache.maven.artifact.versioning.VersionRange;
 
-public final class MavenVersionAdapter {
-    private static final Logger LOGGER = LogManager.getLogger();
-    private MavenVersionAdapter() {}
+import java.util.List;
+import java.util.Map;
 
-    public static VersionRange createFromVersionSpec(final String spec) {
-        try {
-            return VersionRange.createFromVersionSpec(spec);
-        } catch (InvalidVersionSpecificationException e) {
-            LOGGER.fatal("Failed to parse version spec {}", spec, e);
-            throw new RuntimeException("Failed to parse spec", e);
-        }
+public interface IModFileInfo
+{
+    List<IModInfo> getMods();
+
+    record LanguageSpec(String languageName, VersionRange acceptedVersions) {}
+
+    List<LanguageSpec> requiredLanguageLoaders();
+
+    boolean showAsResourcePack();
+
+    default boolean showAsDataPack()
+    {
+        return false;
     }
 
+    Map<String,Object> getFileProperties();
+
+    String getLicense();
+
+    String moduleName();
+
+    String versionString();
+
+    List<String> usesServices();
+
+    IModFile getFile();
+
+    IConfigurable getConfig();
 }
