@@ -106,7 +106,7 @@ public interface IModInfo
         DependencyType getType();
 
         /**
-         * {@return a translation key of the reason of this dependency}
+         * {@return the reason of this dependency}
          * Only displayed if the type is either {@link DependencyType#DISCOURAGED} or {@link DependencyType#INCOMPATIBLE}
          */
         Optional<String> getReason();
