@@ -95,7 +95,7 @@ public interface IModInfo
         /**
          * Shows a warning if the dependency is loaded.
          */
-        CONFLICTING
+        DISCOURAGED
     }
 
     interface ModVersion {
@@ -107,7 +107,7 @@ public interface IModInfo
 
         /**
          * {@return a translation key of the reason of this dependency}
-         * Only displayed if the type is either {@link DependencyType#CONFLICTING} or {@link DependencyType#INCOMPATIBLE}
+         * Only displayed if the type is either {@link DependencyType#DISCOURAGED} or {@link DependencyType#INCOMPATIBLE}
          */
         Optional<String> getReason();
 
