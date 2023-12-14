@@ -86,12 +86,16 @@ public interface IModInfo
         }
     }
 
+    enum DependencyType {
+        REQUIRED, OPTIONAL, INCOMPATIBLE, CONFLICTING
+    }
+
     interface ModVersion {
         String getModId();
 
         VersionRange getVersionRange();
 
-        boolean isMandatory();
+        DependencyType getType();
 
         Ordering getOrdering();
 
