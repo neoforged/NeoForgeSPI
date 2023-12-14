@@ -87,7 +87,15 @@ public interface IModInfo
     }
 
     enum DependencyType {
-        REQUIRED, OPTIONAL, INCOMPATIBLE, CONFLICTING
+        REQUIRED, OPTIONAL,
+        /**
+         * Prevents the game from loading if the dependency is loaded.
+         */
+        INCOMPATIBLE,
+        /**
+         * Shows a warning if the dependency is loaded.
+         */
+        CONFLICTING
     }
 
     interface ModVersion {
@@ -96,6 +104,12 @@ public interface IModInfo
         VersionRange getVersionRange();
 
         DependencyType getType();
+
+        /**
+         * {@return a translation key of the reason of this dependency}
+         * Only displayed if the type is either {@link DependencyType#CONFLICTING} or {@link DependencyType#INCOMPATIBLE}
+         */
+        Optional<String> getReason();
 
         Ordering getOrdering();
 
