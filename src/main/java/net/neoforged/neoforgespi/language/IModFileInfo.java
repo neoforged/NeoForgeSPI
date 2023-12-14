@@ -35,10 +35,7 @@ public interface IModFileInfo
 
     boolean showAsResourcePack();
 
-    default boolean showAsDataPack()
-    {
-        return false;
-    }
+    boolean showAsDataPack();
 
     Map<String,Object> getFileProperties();
 
